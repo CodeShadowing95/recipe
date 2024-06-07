@@ -1,0 +1,23 @@
+{
+  "name": "projet-recettes",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000r\u0000e\u0000c\u0000t\u0000t\u0000e\u0000s\u0000\r\u0000 \u0000",
+  "main": "apps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon apps.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.6.1",
+    "mongoose": "^8.4.0",
+    "nodemon": "^3.1.1"
+  }
+}
