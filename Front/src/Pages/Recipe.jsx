@@ -15,7 +15,7 @@ const Recipe = () => {
   const [recipeData, setRecipeData] = useState(null)
   const [commentDatas, setCommentDatas] = useState([])
   const [formCommentData, setFormCommentData] = useState({ author: userId, content: '', note: 1, idRecipe: id })
-  const [ingredient, setIngredient] = useState({ name: '', quantity: 1, unit: '' })
+  const [ingredient, setIngredient] = useState({ name: '', quantity: 1, unit: 'No-unit' })
   const [ingredientsData, setIngredientsData] = useState({
     ingredients: [],
     idRecipe: id,
@@ -50,7 +50,7 @@ const Recipe = () => {
 
     setIngredientsData({ ...ingredientsData, ingredients: [...ingredientsData.ingredients, ing] })
 
-    setIngredient({ name: '', quantity: 1, unit: '' })
+    setIngredient({ name: '', quantity: 1, unit: 'No-unit' })
   }
 
   const removeIngredient = (name) => {
@@ -118,7 +118,7 @@ const Recipe = () => {
   const discardModalWhenClickOutside = (e) => {
     if (e.target.id === "modal") {
       setShowModal(false)
-      setIngredient({ name: '', quantity: 1, unit: '' })
+      setIngredient({ name: '', quantity: 1, unit: 'No-unit' })
     }
   }
   useEffect(() => {

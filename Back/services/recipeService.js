@@ -1,7 +1,9 @@
 const Recipe = require('../models/recipe');
 
 async function getAllRecipes() {
-    return await Recipe.find();
+    return await Recipe.find()
+    .populate("idCategory", "name")
+    .populate("idMembre", "firstname lastname avatar _id");
 }
 
 async function getRecipesByCategoryId(categoryId) {
@@ -11,7 +13,9 @@ async function getRecipesByCategoryId(categoryId) {
 }
 
 async function getRecipeById(recipeId) {
-    return await Recipe.findById(recipeId);
+    return await Recipe.findById(recipeId)
+    .populate("idMembre", "firstname lastname avatar")
+    .populate("idCategory", "name");
 }
 
 async function createRecipe(recipeData) {

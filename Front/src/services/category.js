@@ -11,7 +11,7 @@ export const fetchCategories = async () => {
   }
 }
 
-export const addCategory = async (url, data) => {
+export const addCategory = async (data) => {
   try {
     const response = await axios.post(`${BASE_URL}/`, data, {
       headers: {

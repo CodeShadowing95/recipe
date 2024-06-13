@@ -16,7 +16,7 @@ export default function App() {
   }, [navigate])
 
   return (
-    <div className="flex w-screen min-h-screen bg-slate-200">
+    <div id="root" className="flex w-screen min-h-screen">
       <Routes>
         <Route path="/*" exact element={!user ? <Auth /> : <Home />}  />
         <Route path="/auth" exact element={!user ? <Auth />  : <Home />} />

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Route, Routes } from "react-router-dom"
-import { Feed, Recipe } from "../Pages"
+import { Feed, NewRecipe, Recipe } from "../Pages"
 
 const Home = () => {
 
@@ -9,6 +9,7 @@ const Home = () => {
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route path="/feed" exact element={<Feed />} />
+        <Route path="/create-recipe" element={<NewRecipe />} />
         <Route path="/recipe/:id" element={<Recipe />} />
       </Routes>
     </main>

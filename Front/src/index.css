@@ -14,11 +14,11 @@
 
 body {
   font-family: 'Open Sans', serif;
-  background-color: #e2e8f0;
+  /* background-color: #e2e8f0; */
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px;
   height: 0px;
 }
 
@@ -40,6 +40,13 @@ body {
   display: none;
 }
 
+#recipe {
+  scroll-behavior: smooth;
+}
+
+#recipe::-webkit-scrollbar {
+  width: 7px;
+}
 
 #comments::-webkit-scrollbar {
   width: 5px;
