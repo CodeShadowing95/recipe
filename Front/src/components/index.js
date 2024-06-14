@@ -4,6 +4,7 @@ import Spinner from "./Spinner";
 import RecipeDetail from "./RecipeDetail";
 import Socials from "./Socials";
 import RecipesList from "./RecipesList";
+import NewRecipeModal from "./NewRecipeModal";
 
 export {
   Navbar,
@@ -12,4 +13,5 @@ export {
   RecipeDetail,
   Socials,
   RecipesList,
+  NewRecipeModal,
 }

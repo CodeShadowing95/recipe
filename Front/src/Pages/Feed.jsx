@@ -37,8 +37,13 @@ const Feed = () => {
 
     setIsLoading(true)
     fetchRecipes()
-    .then(({ data }) => {
-      let randomRecipes = data.sort(() => Math.random() - 0.5)
+    .then((response) => {
+      if (response.error) {
+        console.log(response.error)
+        return
+      }
+      
+      let randomRecipes = response.data.sort(() => Math.random() - 0.5)
       setRecipesList(randomRecipes)
       setIsLoading(false)
     })
@@ -46,7 +51,7 @@ const Feed = () => {
 
   useEffect(() => {
     getRecipes()
-  }, [])
+  }, [recipesList.length])
 
   const getRecipesByCategory = async (category) => {
     setSelected(category?.name.toLowerCase())
@@ -55,7 +60,7 @@ const Feed = () => {
     await fetchRecipesByCategory(category._id)
     .then(({ data }) => {
       const randomRecipes = data.sort(() => Math.random() - 0.5)
-      console.log(randomRecipes);
+      // console.log(randomRecipes);
       setRecipesList(randomRecipes)
       // setRecipesByCategories((prev) => [...prev, { categoryName: category.name, recipes: data }])
       setIsLoading(false)
@@ -195,12 +200,10 @@ const Feed = () => {
               </div>
             ) : (
               <div className="w-full h-[calc(100vh-230px)] mt-8 flex justify-center items-center">
-                <div className="w-[350px] h-full flex flex-col justify-center items-center rounded-3xl shadow-xl border">
-                  <div className="w-44 h-44 flex justify-center items-center rounded-full bg-orange-50">
-                    <img src={nofood} alt="no recipe" className="m-auto w-3/5 h-3/5" />
-                  </div>
-                  <p className="text-gray-700 font-bold text-xl mt-6">Pas de recettes</p>
-                  <p className="text-gray-400 text-sm max-w-[250px] text-center mt-2">Soyez le tout premier à nous faire découvrir les recettes.</p>
+                <div className="w-[350px] h-full flex flex-col justify-center items-center">
+                  <img src={nofood} alt="no recipe" className="w-[200px] h-[200px" />
+                  <p className="text-gray-700 font-bold text-xl mt-6">Pas de recettes pour le moment</p>
+                  <p className="text-gray-400 text-sm max-w-[250px] text-center mt-2">Soyez le tout premier à nous faire découvrir vos créations.</p>
                   <div className="flex justify-between items-center gap-2 px-4 py-3 mt-8 bg-orange-600 rounded-full cursor-pointer" onClick={() => {}}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24"><path fill="#ffffff" d="M11 17h2v-4h4v-2h-4V7h-2v4H7v2h4zm1 5q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
                     <p className="text-white text-xs font-semibold">Nouvelle recette</p>

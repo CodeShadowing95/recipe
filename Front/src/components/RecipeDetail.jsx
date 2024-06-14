@@ -56,6 +56,13 @@ const RecipeDetail = ({ detailId, onSetDetail }) => {
     fetchMyRecipes()
   }, [user._id, detailId])
 
+  const scrollLeft = () => {
+    document.getElementById("slider").scrollLeft -= 500
+  }
+  const scrollRight = () => {
+    document.getElementById("slider").scrollLeft += 500
+  }
+
   // Discard a modal when click outside
   const discardModalWhenClickOutside = (e) => {
     if (e.target.id === "modal") {
@@ -78,7 +85,23 @@ const RecipeDetail = ({ detailId, onSetDetail }) => {
       </div>
 
       {/* Content */}
-      <div className={`bg-white w-full h-[calc(100vh-2rem)] rounded-t-xl mt-14 overflow-auto ${!showDetail ? 'translate-y-full' : 'translate-y-0'} transition-all duration-500`}>
+      <div className={`relative bg-white w-full h-[calc(100vh-2rem)] rounded-t-xl mt-14 overflow-auto ${!showDetail ? 'translate-y-full' : 'translate-y-0'} transition-all duration-500`}>
+        {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+        <div className="absolute inset-y-1/2 right-5">
+          <div className="flex flex-col gap-4">
+            <div className="bg-white rounded-full shadow p-2.5 border cursor-pointer" onClick={() => alert("Liked")}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="m-auto w-5 h-5 text-black" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1"/></svg>
+            </div>
+            <div className="bg-white rounded-full shadow p-2.5 border cursor-pointer" onClick={() => alert("Saved")}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="m-auto w-5 h-5 text-black" viewBox="0 0 24 24"><path fill="currentColor" d="M18.002 21.5q-1.04 0-1.771-.73q-.731-.728-.731-1.77q0-.2.035-.413q.034-.214.103-.402l-7.742-4.562q-.367.414-.854.645Q6.556 14.5 6 14.5q-1.042 0-1.77-.728q-.73-.729-.73-1.77t.73-1.771T6 9.5q.556 0 1.042.232q.487.231.854.645l7.742-4.562q-.069-.188-.103-.402Q15.5 5.2 15.5 5q0-1.042.729-1.77q.728-.73 1.769-.73t1.771.729t.731 1.769t-.73 1.771Q19.042 7.5 18 7.5q-.556 0-1.042-.232q-.487-.231-.854-.645l-7.742 4.562q.069.188.103.4q.035.213.035.411t-.035.415t-.103.404l7.742 4.562q.367-.414.854-.645q.486-.232 1.042-.232q1.042 0 1.77.729q.73.728.73 1.769t-.728 1.771t-1.77.731"/></svg>
+            </div>
+            <div className="bg-white rounded-full shadow p-2.5 border cursor-pointer" onClick={() => alert("Saved")}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="m-auto w-5 h-5 text-black" viewBox="0 0 24 24"><path fill="currentColor" d="M11.5 16.5h1V11h-1zm.5-6.923q.262 0 .438-.177q.177-.177.177-.438q0-.262-.177-.439q-.176-.177-.438-.177t-.438.177t-.177.439t.177.438q.176.177.438.177M12.003 21q-1.866 0-3.51-.708q-1.643-.709-2.859-1.924t-1.925-2.856T3 12.003t.708-3.51t1.924-2.859t2.856-1.925T11.997 3t3.51.708t2.859 1.924t1.925 2.856t.709 3.509t-.708 3.51t-1.924 2.859t-2.856 1.925t-3.509.709M12 20q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
+            </div>
+          </div>
+        </div>
+        {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+
         <div className="w-full py-[64px] px-[120px]">
           {isLoading ? (
             <>
@@ -96,18 +119,18 @@ const RecipeDetail = ({ detailId, onSetDetail }) => {
             <div className="w-full flex flex-col items-center max-w-6xl m-auto">
               <div className="flex flex-col w-full mb-2">
                 <h1 className="text-[26px] leading-8 font-extrabold mb-1">{recipeData.title}</h1>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <p className="text-sm text-gray-500">{recipeData.idCategory?.name}</p>
-                  <p className="text-lg">|</p>
+                  <div className="w-1 h-1 rounded-full bg-gray-500" />
                   {/* Stars */}
                   <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24"><path fill="currentColor" d="m15.15 16.85l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4v7.8zm-7.825 2.073l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-yellow-500 -ml-0.5" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-yellow-500 -ml-0.5" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-yellow-500 -ml-0.5" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-yellow-500 -ml-0.5" viewBox="0 0 24 24"><path fill="currentColor" d="m7.325 18.923l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-yellow-500 -ml-0.5" viewBox="0 0 24 24"><path fill="currentColor" d="m15.15 16.85l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4v7.8zm-7.825 2.073l1.24-5.313l-4.123-3.572l5.431-.47L12 4.557l2.127 5.01l5.43.47l-4.122 3.572l1.24 5.313L12 16.102z"/></svg>
                   </div>
-                  <p className="text-[13px] font-bold text-gray-700 uppercase">0 commentaire(s) / 0 like(s)</p>
+                  <p className="text-[13px] font-bold text-gray-700 uppercase">0 commentaires / 0 like(s)</p>
                 </div>
               </div>
               <div className="sticky top-0 flex justify-between items-center py-4 mx-auto gap-10 bg-white w-full z-50">
@@ -233,14 +256,22 @@ const RecipeDetail = ({ detailId, onSetDetail }) => {
                 </div>
               </div>
               
-              <div className="w-full flex flex-col border-y border-yellow-500 my-40 py-2 gap-8">
+              <div className="w-full flex flex-col border-y border-yellow-500 my-40 py-2 gap-8 relative">
+                {/* Arrows start */}
+                <div className="absolute inset-y-1/3 left-0 z-10 w-14 h-14 flex bg-black/20 backdrop-blur-sm rounded-full cursor-pointer hover:shadow-lg transition-all" onClick={scrollLeft}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="m-auto w-8 h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6z"/></svg>
+                </div>
+                <div className="absolute inset-y-1/3 right-0 z-10 w-14 h-14 flex bg-black/20 backdrop-blur-sm rounded-full cursor-pointer hover:shadow-lg transition-all" onClick={scrollRight}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="m-auto w-8 h-8 text-white rotate-180" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6z"/></svg>
+                </div>
+                {/* Arrows end */}
                 <div className="flex justify-between items-center z-10 -mt-6">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-yellow-500 bg-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.577L6.423 12L12 6.423L17.577 12zm0-1.427L16.15 12L12 7.85L7.85 12zM12 12"/></svg>
                   <p className="text-2xl font-bold text-center bg-white px-4">Mes recettes</p>
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-yellow-500 bg-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.577L6.423 12L12 6.423L17.577 12zm0-1.427L16.15 12L12 7.85L7.85 12zM12 12"/></svg>
                 </div>
 
-                <div className="max-w-[calc(100%-32px)] flex mx-8 overflow-auto gap-8">
+                <div id="slider" className="max-w-[calc(100%-32px)] flex mx-8 overflow-auto gap-8">
                   {myRecipes?.length > 0 ? (
                     myRecipes.map((recipe, index) => (
                       <div key={index} className="w-52 flex-shrink-0">
