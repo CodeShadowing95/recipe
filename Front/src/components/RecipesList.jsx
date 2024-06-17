@@ -43,7 +43,7 @@ const RecipesList = ({ recipeId }) => {
         suggestions.length === 0 ? (
           <p className="text-gray-400 italic">Aucune suggestion de recettes à proposer</p>
         ) : (
-          <div className="grid gap-12" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))' }}> 
+          <div className="grid gap-12" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(100%, 150px), 1fr)' }}> 
             {suggestions.map((recipe, index) => (
               <div key={index} className="w-full h-[270px] flex flex-col gap-1 rounded-md cursor-pointer group">
                 <div className="w-full h-[230px] rounded-t-md relative">

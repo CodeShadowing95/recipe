@@ -6,7 +6,7 @@ async function getAllComments() {
 
 async function getCommentsByRecipeId(recipeId) {
     return await Comment.find({ idRecipe: recipeId })
-    .populate('author', 'firstname lastname');
+    .populate('author', 'firstname lastname avatar _id');
 }
 
 async function getCommentById(commentId) {

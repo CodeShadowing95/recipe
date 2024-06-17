@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe, onRecipe, isSelected, onShowRecipe }) => {
         <img
           src={recipe?.picture}
           alt="recipe"
-          className="w-full h-full object-cover rounded-t-lg group-hover:scale-110 transition-all"
+          className="w-full h-full object-cover rounded-t-lg group-hover:scale-110 transition-all duration-150"
         />
         <div onClick={(e) => e.stopPropagation()} className={`absolute top-2 right-2 flex justify-center items-center gap-2 ${isHovered === recipe?._id ? "translate-y-0" : "-translate-y-[200%]"} transition-transform duration-300`}>
           {/* <div className="bg-white rounded-full shadow p-1.5" onClick={() => alert("Saved")}>
@@ -75,7 +75,7 @@ const RecipeCard = ({ recipe, onRecipe, isSelected, onShowRecipe }) => {
         </div> */}
       </div>
 
-      <div className={`absolute inset-0 rounded-lg bg-white ${isSelected ? 'translate-y-0' : 'translate-y-full'} transition-all z-20 duration-500`}>
+      <div className={`absolute inset-0 rounded-lg bg-white ${isSelected ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} transition-all z-20 duration-500`}>
         <div className="w-full h-full flex flex-col justify-between py-6 px-4 relative">
           <div onClick={(e) => e.stopPropagation()} className={`absolute top-2 right-2 flex justify-center items-center transition-all duration-300`}>
             <div className="bg-white rounded-full shadow-xl border p-1.5" onClick={() => onRecipe("")}>

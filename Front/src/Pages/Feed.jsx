@@ -74,7 +74,7 @@ const Feed = () => {
     setOpenModal(false)
   }
 
-  document.body.style.overflow = openModal ? 'hidden' : 'auto'
+  document.body.style.overflow = openModal || detailRecipe ? 'hidden' : 'auto'
 
   const slideLeft = () => {
     let slider = document.getElementById("slider")

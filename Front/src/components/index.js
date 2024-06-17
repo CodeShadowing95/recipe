@@ -5,6 +5,7 @@ import RecipeDetail from "./RecipeDetail";
 import Socials from "./Socials";
 import RecipesList from "./RecipesList";
 import NewRecipeModal from "./NewRecipeModal";
+import Comment from "./Comment";
 
 export {
   Navbar,
@@ -14,4 +15,5 @@ export {
   Socials,
   RecipesList,
   NewRecipeModal,
+  Comment,
 }
